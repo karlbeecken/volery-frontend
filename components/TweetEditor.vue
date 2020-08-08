@@ -13,6 +13,11 @@
 <script>
 export default {
   name: 'TweetEditor',
+  data() {
+    return {
+      event: ''
+    }
+  },
   methods: {
     updateValue(e) {
       this.$emit('event', e)
