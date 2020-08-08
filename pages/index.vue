@@ -10,6 +10,7 @@
 
 <script>
 import TweetEditor from '@/components/TweetEditor.vue'
+import Axios from 'axios'
 export default {
   data() {
     return {
@@ -21,11 +22,17 @@ export default {
     TweetEditor,
   },
   methods: {
+    async fetchSomething() {
+      const ip = await this.$axios.$get('http://icanhazip.com')
+      this.ip = ip
+    },
     updateTweetText(value) {
       this.tweet = value
     },
-    submitTweet(e) {
+    async submitTweet(e) {
       console.log(this.tweet)
+      await this.fetchSomething()
+      console.log(this.ip)
     },
   },
 }
