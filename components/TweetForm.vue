@@ -2,17 +2,12 @@
   <ValidationObserver v-slot="{ invalid }">
     <form @submit.prevent="onSubmit">
       <ValidationProvider v-slot="{ errors }" name="tweetName" rules="required">
-        <b-field label="Name" label-position="on-border" :message="errors[0]">
+        <b-field label="Tweet Name" :message="errors[0]">
           <b-input v-model="tweetName"></b-input>
         </b-field>
       </ValidationProvider>
       <ValidationProvider v-slot="{ errors }" name="tweetName" rules="required">
-        <b-field
-          label="Tweet Text"
-          label-position="on-border"
-          :message="errors[0]"
-          class="mt-5"
-        >
+        <b-field label="Tweet Text" :message="errors[0]" class="mt-5">
           <b-input
             v-model="tweetText"
             type="textarea"
@@ -43,7 +38,19 @@ export default {
     }
   },
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      this.$axios
+        .$post('https://jsonplaceholder.typicode.com/posts/', {
+          name: this.tweetName,
+          text: this.tweetText,
+        })
+        .then(function (response) {
+          window.location = 'v/' + response
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
   },
 }
 </script>
