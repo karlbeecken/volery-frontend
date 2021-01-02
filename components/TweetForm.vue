@@ -40,7 +40,7 @@ export default {
   methods: {
     onSubmit() {
       this.$axios
-        .$post('https://jsonplaceholder.typicode.com/posts/', {
+        .$post('https://api.volery.app/tweets', {
           name: this.tweetName,
           text: this.tweetText,
         })

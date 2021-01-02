@@ -1,7 +1,7 @@
 <template>
-  <div class="tile">
+  <div class="box">
     <p>{{ prop.text }}</p>
-    <p class="is-size-1">{{ prop.date }}</p>
+    <b-tag>{{ prop.date }}</b-tag>
   </div>
 </template>
 
