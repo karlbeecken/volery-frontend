@@ -43,7 +43,19 @@ export default {
     }
   },
   methods: {
-    onSubmit() {},
+    onSubmit() {
+      this.$axios
+        .$post('https://jsonplaceholder.typicode.com/posts/', {
+          name: this.tweetName,
+          text: this.tweetText,
+        })
+        .then(function (response) {
+          window.open('/v/' + response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
   },
 }
 </script>
