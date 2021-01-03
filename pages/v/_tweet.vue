@@ -1,7 +1,7 @@
 <template>
   <div v-if="tweet">
     <h1 class="title">{{ tweet.name }}</h1>
-    <TweetLink />
+    <TweetLink :id="tweet._id" />
     <div v-for="prop in tweet.proposals" :key="prop.date">
       <ProposalDisplay :prop="prop" />
     </div>
