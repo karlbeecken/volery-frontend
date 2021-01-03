@@ -5,10 +5,11 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="propText"
-          :rules="{ required: true }"
+          rules="required"
         >
           <b-field :message="errors[0]">
             <b-input
+              v-model="propText"
               :value="prop.text"
               type="textarea"
               maxlength="280"
@@ -29,10 +30,29 @@
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
 
 export default {
-  props: ['prop'],
+  props: ['prop', 'id'],
   components: {
     ValidationObserver: ValidationObserver,
     ValidationProvider: ValidationProvider,
+  },
+  data() {
+    return {
+      propText: '',
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.$axios
+        .$post('https://api.volery.app/tweets/' + this.id, {
+          text: this.propText,
+        })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
   },
 }
 </script>
