@@ -7,7 +7,7 @@
         </b-field>
       </ValidationProvider>
       <ValidationProvider v-slot="{ errors }" name="tweetText" rules="required">
-        <b-field label="Tweet Text" :message="errors[0]" class="mt-5">
+        <b-field label="Tweet Text" :message="errors[0]">
           <b-input
             v-model="tweetText"
             type="textarea"
@@ -15,7 +15,7 @@
           ></b-input>
         </b-field>
       </ValidationProvider>
-      <b-field class="mt-5">
+      <b-field>
         <b-button native-type="submit" :disabled="invalid">New Tweet</b-button>
       </b-field>
     </form>

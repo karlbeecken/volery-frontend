@@ -2,13 +2,13 @@
   <div v-if="tweet">
     <h1 class="title">{{ tweet.name }}</h1>
     <TweetLink :id="tweet._id" />
-    <div v-for="prop in tweet.proposals" :key="prop.date">
-      <ProposalDisplay :prop="prop" />
-    </div>
     <ProposalEditor
       :id="tweet._id"
       :prop="tweet.proposals[tweet.proposals.length - 1]"
     />
+    <div v-for="prop in tweet.proposals.slice().reverse()" :key="prop.date">
+      <ProposalDisplay :prop="prop" />
+    </div>
   </div>
   <div v-else>
     <h1 class="title">Seems like your link is broken. :(</h1>
