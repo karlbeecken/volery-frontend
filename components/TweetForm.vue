@@ -39,13 +39,14 @@ export default {
   },
   methods: {
     onSubmit() {
+      const PATH_API = '/tweets'
       this.$axios
         .$post('https://api.volery.app/tweets', {
           name: this.tweetName,
           text: this.tweetText,
         })
         .then(function (response) {
-          window.location = 'v/' + response._id
+          console.log(response)
         })
         .catch(function (error) {
           console.log(error)

@@ -56,12 +56,20 @@ export default {
     'nuxt-buefy',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  /*
+   ** Proxy to prevent CORS Error
+   ** See https://nuxtjs.org/faq/http-proxy
+   */
+  proxy: {
+    '/api/v1': { target: 'https://api.volery.app/', pathRewrite: {'^/api/v1': ''} }
+    },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/

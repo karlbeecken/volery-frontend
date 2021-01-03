@@ -1,5 +1,5 @@
 <template>
-  <b-navbar mobile-burger="false">
+  <b-navbar :mobile-burger="false" :shadow="true" :fixed-top="true">
     <template slot="brand">
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
         <img
