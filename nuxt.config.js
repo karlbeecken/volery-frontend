@@ -35,7 +35,8 @@ export default {
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: [
-    "~/plugins/vee-validate.js"
+    "~/plugins/vee-validate.js",
+    '~plugins/date-filter.js'
   ],
   /*
    ** Auto import components

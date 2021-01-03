@@ -1,7 +1,7 @@
 <template>
-  <div class="box">
+  <div class="box mt-3">
     <p>{{ prop.text }}</p>
-    <b-tag>{{ prop.date }}</b-tag>
+    <b-tag class="mt-1">{{ prop.date | formatDate }}</b-tag>
   </div>
 </template>
 
