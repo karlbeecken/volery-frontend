@@ -5,6 +5,7 @@
     <div v-for="prop in tweet.proposals" :key="prop.date">
       <ProposalDisplay :prop="prop" />
     </div>
+    <ProposalEditor :prop="tweet.proposals[tweet.proposals.length - 1]" />
   </div>
 </template>
 

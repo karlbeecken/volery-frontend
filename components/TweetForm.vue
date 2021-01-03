@@ -6,7 +6,7 @@
           <b-input v-model="tweetName"></b-input>
         </b-field>
       </ValidationProvider>
-      <ValidationProvider v-slot="{ errors }" name="tweetName" rules="required">
+      <ValidationProvider v-slot="{ errors }" name="tweetText" rules="required">
         <b-field label="Tweet Text" :message="errors[0]" class="mt-5">
           <b-input
             v-model="tweetText"
@@ -46,7 +46,7 @@ export default {
           text: this.tweetText,
         })
         .then(function (response) {
-          console.log(response)
+          window.location = 'v/' + response._id
         })
         .catch(function (error) {
           console.log(error)
