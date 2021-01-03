@@ -17,6 +17,7 @@
     "node-sass": "^5.0.0",
     "nuxt": "^2.14.12",
     "nuxt-buefy": "^0.4.4",
+    "nuxt-clipboard2": "^0.2.1",
     "sass-loader": "^10.1.0",
     "vee-validate": "^3.4.5"
   },
