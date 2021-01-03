@@ -45,7 +45,7 @@ export default {
           text: this.tweetText,
         })
         .then(function (response) {
-          window.location = 'v/' + response
+          window.location = 'v/' + response._id
         })
         .catch(function (error) {
           console.log(error)
