@@ -14,7 +14,10 @@ extend('required', {
 
 extend('required', {
   ...required,
-  message: 'please fill in'
+  message: 'Please fill in.'
 });
 
-extend('is_not', is_not);
+extend('is_not', {
+  ...is_not,
+  message: 'You need to change something.'
+});

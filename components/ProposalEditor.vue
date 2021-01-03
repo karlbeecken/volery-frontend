@@ -5,7 +5,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="propText"
-          rules="required"
+          :rules="{ required: true, is_not: placeholder }"
         >
           <b-field :message="errors[0]">
             <b-input
@@ -37,8 +37,11 @@ export default {
   },
   data() {
     return {
-      propText: '',
+      propText: [],
     }
+  },
+  created() {
+    ;(this.propText = this.prop.text), (this.placeholder = this.prop.text)
   },
   methods: {
     onSubmit() {
