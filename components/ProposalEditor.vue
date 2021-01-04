@@ -13,6 +13,7 @@
               :value="prop.text"
               type="textarea"
               maxlength="280"
+              aria-label="New Proposal"
             ></b-input>
           </b-field>
         </ValidationProvider>
