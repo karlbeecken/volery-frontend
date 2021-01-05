@@ -45,21 +45,26 @@ export default {
     ;(this.propText = this.prop.text), (this.placeholder = this.prop.text)
   },
   methods: {
+    // doesn't work
     toParent() {
       this.$emit('newProp')
     },
     onSubmit() {
-      this.$axios
-        .$post('https://api.volery.app/tweets/' + this.id + '/proposal', {
-          text: this.propText,
-        })
-        .then(function (response) {
-          console.log(response)
-          window.location.reload(true)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      if (this.propText != this.placeholder) {
+        this.$axios
+          .$post('https://api.volery.app/tweets/' + this.id + '/proposal', {
+            text: this.propText,
+          })
+          .then(function (response) {
+            console.log(response)
+            window.location.reload(true)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      } else {
+        console.log('error')
+      }
     },
   },
 }

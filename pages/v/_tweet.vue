@@ -30,6 +30,7 @@ export default {
     return { tweet }
   },
   methods: {
+    // doesn't work
     async loadProps() {
       const tweet = await this.$axios.$get(
         'https://api.volery.app/tweet/' + this.id
