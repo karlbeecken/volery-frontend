@@ -2,7 +2,7 @@
   <div>
     <div v-for="prop in tweet.proposals.slice().reverse()" :key="prop.date">
       <div class="box mt-3">
-        <p>{{ prop.text }}</p>
+        <p v-html="$options.filters.highlightText(prop.text)"></p>
         <b-tag class="mt-1">{{ prop.date | formatDate }}</b-tag>
       </div>
     </div>

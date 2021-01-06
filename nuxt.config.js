@@ -39,7 +39,8 @@ export default {
    */
   plugins: [
     "~/plugins/vee-validate.js",
-    '~plugins/date-filter.js'
+    '~plugins/date-filter.js',
+    '~plugins/markThings.js',
   ],
   /*
    ** Auto import components
