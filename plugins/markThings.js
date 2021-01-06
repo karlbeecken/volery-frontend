@@ -18,9 +18,19 @@ Vue.filter('highlightText', (value) => {
     var x
     for (x of atmatches) {
         const forURl = x[0].substring(1)
-        const replacement = '<i><a href="https://twitter.com/' + forURl + '" target="_blank">' + x[0] + '</a></i>'
+        const replacement = '<b><a href="https://twitter.com/' + forURl + '" target="_blank">' + x[0] + '</a></b>'
       console.log(replacement)
       text = text.replace(x[0], replacement)
     }
+    // links
+    const linkregex = /\w*(https:\/\/)[0-9a-zA-Z-._~:\/?#[\]@!$&'()*+,;=]*/g
+    const linkmatches = [...value.matchAll(linkregex)]
+    var x
+    for (x of linkmatches) {
+        const replacement = '<i><a href="' + x[0] + '" target="_blank">' + x[0] + '</a></i>'
+      console.log(replacement)
+      text = text.replace(x[0], replacement)
+    }
+
     return text
 })
