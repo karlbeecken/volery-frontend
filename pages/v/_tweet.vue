@@ -4,7 +4,7 @@
     <TweetLink :id="tweet._id" />
     <ProposalEditor
       :id="tweet._id"
-      :prop="tweet.proposals[tweet.proposals.length - 1]"
+      :originalProp="tweet.proposals[tweet.proposals.length - 1]"
       v-on:newProp="loadProps"
     />
 
@@ -27,12 +27,12 @@ export default {
   async asyncData({ params, $axios }) {
     const id = params.tweet
     const tweet = await $axios.$get('https://api.volery.app/tweet/' + id)
-    return { tweet }
+    return { id, tweet }
   },
   methods: {
     // doesn't work
     async loadProps() {
-      const tweet = await this.$axios.$get(
+      this.tweet = await this.$axios.$get(
         'https://api.volery.app/tweet/' + this.id
       )
       this.componentKey += 1

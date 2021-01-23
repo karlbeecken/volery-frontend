@@ -5,12 +5,11 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="propText"
-          :rules="{ required: true, is_not: placeholder }"
+          :rules="{ required: true, is_not: originalProp.text }"
         >
           <b-field :message="errors[0]">
             <b-input
-              v-model="propText"
-              :value="prop.text"
+              v-model="prop.text"
               type="textarea"
               maxlength="280"
               aria-label="New Proposal"
@@ -18,7 +17,7 @@
           </b-field>
         </ValidationProvider>
         <b-field>
-          <b-button native-type="submit" :disabled="invalid" @click="toParent"
+          <b-button native-type="submit" :disabled="invalid"
             >New Proposal</b-button
           >
         </b-field>
@@ -31,34 +30,27 @@
 import { ValidationObserver, ValidationProvider } from 'vee-validate'
 
 export default {
-  props: ['prop', 'id'],
+  props: ['originalProp', 'id'],
   components: {
     ValidationObserver: ValidationObserver,
     ValidationProvider: ValidationProvider,
   },
   data() {
     return {
-      propText: [],
+      prop: { text: ""},
     }
   },
   created() {
-    ;(this.propText = this.prop.text), (this.placeholder = this.prop.text)
+    this.prop = Object.assign({},this.originalProp);
   },
   methods: {
-    // doesn't work
-    toParent() {
-      this.$emit('newProp')
-    },
-    onSubmit() {
-      if (this.propText != this.placeholder) {
-        this.$axios
+    async onSubmit() {
+      if (this.prop.text != this.originalProp) {
+        await this.$axios
           .$post('https://api.volery.app/tweets/' + this.id + '/proposal', {
-            text: this.propText,
+            text: this.prop.text,
           })
-          .then(function (response) {
-            console.log(response)
-            window.location.reload(true)
-          })
+          .then((response) => this.$emit('newProp'))
           .catch(function (error) {
             console.log(error)
           })
