@@ -14,7 +14,7 @@
     "@nuxtjs/bulma": "^1.3.0",
     "@nuxtjs/proxy": "^2.1.0",
     "bulma-prefers-dark": "0.1.0-beta.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "nuxt": "^2.14.12",
     "nuxt-buefy": "^0.4.4",
     "nuxt-clipboard2": "^0.2.1",
